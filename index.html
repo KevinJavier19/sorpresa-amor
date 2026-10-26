@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Una sorpresa para ti ❤️</title>
+
+<style>
+body {
+  margin: 0;
+  background: #16091f;
+  color: white;
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+section {
+  padding: 35px 20px;
+}
+
+h1 {
+  color: #ff91bc;
+}
+
+button {
+  padding: 15px 25px;
+  border: none;
+  border-radius: 25px;
+  background: #ff5c9a;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+video {
+  width: 100%;
+  max-width: 600px;
+  border-radius: 15px;
+}
+
+#videoSection, #cartaSection {
+  display: none;
+}
+
+#carta {
+  display: none;
+  background: #fff1f5;
+  color: #6b2346;
+  padding: 25px;
+  border-radius: 15px;
+  margin: 20px auto;
+  max-width: 500px;
+  line-height: 1.7;
+}
+
+.fuego {
+  position: fixed;
+  pointer-events: none;
+  font-size: 35px;
+  animation: explotar 1.5s forwards;
+}
+
+@keyframes explotar {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(2);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(3);
+    opacity: 0;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<section id="inicio">
+  <h1>❤️ Tengo una sorpresa para ti ❤️</h1>
+  <p>Hay momentos que merecen recordarse para siempre.</p>
+  <button onclick="comenzar()">
+    Abre tu sorpresa 🎁
+  </button>
+</section>
+
+<section id="videoSection">
+  <h1>Nuestra historia de amor ❤️</h1>
+
+  <video id="video" controls playsinline>
+    <source src="video.mp4" type="video/mp4">
+    Tu navegador no puede reproducir este video.
+  </video>
+
+  <p>Hecho con mucho amor para ti ❤️</p>
+</section>
+
+<section id="cartaSection">
+  <h1>Una última sorpresa... 💌</h1>
+
+  <button id="sobre" onclick="abrirCarta()">
+    💌 Toca para abrir tu carta
+  </button>
+
+  <div id="carta">
+    <h2>Para el amor de mi vida ❤️</h2>
+
+    <p>
+      Mi amor, cada momento a tu lado es un recuerdo
+      que guardo con muchísimo cariño.
+    </p>
+
+    <p>
+      Gracias por formar parte de mi vida,
+      por cada sonrisa y por todos los momentos
+      maravillosos que compartimos.
+    </p>
+
+    <p>
+      Esta pequeña sorpresa es una forma de
+      recordarte lo especial que eres para mí.
+    </p>
+
+    <h3>Te amo muchísimo. ❤️</h3>
+  </div>
+</section>
+
+<script>
+function fuegosArtificiales() {
+  const emojis = ["🎆", "🎇", "✨", "💖", "🎉"];
+
+  const fuego = document.createElement("div");
+  fuego.className = "fuego";
+
+  fuego.textContent =
+    emojis[Math.floor(Math.random() * emojis.length)];
+
+  fuego.style.left = Math.random() * 90 + "vw";
+  fuego.style.top = Math.random() * 80 + "vh";
+
+  document.body.appendChild(fuego);
+
+  setTimeout(() => fuego.remove(), 1500);
+}
+
+function comenzar() {
+  document.getElementById("inicio").style.display = "none";
+
+  let cantidad = 0;
+
+  const intervalo = setInterval(() => {
+    fuegosArtificiales();
+    cantidad++;
+
+    if (cantidad >= 35) {
+      clearInterval(intervalo);
+    }
+  }, 120);
+
+  setTimeout(() => {
+    document.getElementById("videoSection").style.display = "block";
+
+    const video = document.getElementById("video");
+
+    video.play().catch(() => {
+      video.controls = true;
+    });
+  }, 4500);
+}
+
+document.getElementById("video").addEventListener("ended", () => {
+  document.getElementById("videoSection").style.display = "none";
+  document.getElementById("cartaSection").style.display = "block";
+});
+
+function abrirCarta() {
+  document.getElementById("sobre").style.display = "none";
+  document.getElementById("carta").style.display = "block";
+
+  for (let i = 0; i < 20; i++) {
+    setTimeout(fuegosArtificiales, i * 150);
+  }
+}
+</script>
+
+</body>
+</html>
