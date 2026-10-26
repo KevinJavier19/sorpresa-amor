@@ -90,11 +90,19 @@ video {
 <section id="videoSection">
   <h1>Nuestra historia de amor ❤️</h1>
 
-  <video id="video" controls playsinline>
-    <source src="video.mp4" type="video/mp4">
-    Tu navegador no puede reproducir este video.
-  </video>
-
+  <iframe
+  id="video"
+  width="100%"
+  height="400"
+  src="https://www.youtube.com/embed/8cdB7zlhnlk"
+  title="Nuestra historia de amor"
+  frameborder="0"
+  allow="accelerometer; autoplay; encrypted-media; picture-in-picture"
+  allowfullscreen>
+</iframe>
+<button onclick="mostrarCarta()">
+  💌 Ya vi nuestro video, quiero abrir mi carta
+</button>
   <p>Hecho con mucho amor para ti ❤️</p>
 </section>
 
@@ -163,19 +171,14 @@ function comenzar() {
   setTimeout(() => {
     document.getElementById("videoSection").style.display = "block";
 
-    const video = document.getElementById("video");
-
-    video.play().catch(() => {
-      video.controls = true;
-    });
+    
   }, 4500);
 }
 
-document.getElementById("video").addEventListener("ended", () => {
+function mostrarCarta() {
   document.getElementById("videoSection").style.display = "none";
   document.getElementById("cartaSection").style.display = "block";
-});
-
+}
 function abrirCarta() {
   document.getElementById("sobre").style.display = "none";
   document.getElementById("carta").style.display = "block";
